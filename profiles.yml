@@ -3,7 +3,7 @@ dbt-proj:
   outputs:
     dev:
       type: postgres
-      host: 127.0.0.1
+      host: host.docker.internal
       user: postgres
       pass: postgres
       port: 5432
