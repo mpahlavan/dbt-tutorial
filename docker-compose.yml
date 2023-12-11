@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:12.17
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.7.2
+    volumes:
+      - .:/usr/app/dbt/
+    environment:
+      - DBT_PROFILES_DIR=/usr/app/dbt
+      - DBT_TARGET=dbttarger
+    command: ["run"]

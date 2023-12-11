@@ -1,0 +1,11 @@
+dbt-proj:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: 127.0.0.1
+      user: postgres
+      pass: postgres
+      port: 5432
+      dbname: postgres
+      schema: postgres
