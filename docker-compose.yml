@@ -4,16 +4,25 @@ services:
   postgres:
     image: postgres:12.17
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: postgres
     ports:
       - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   dbt:
-    image: ghcr.io/dbt-labs/dbt-postgres:1.7.2
+    image: ghcr.io/dbt-labs/dbt-postgres:1.7.2 #dbtlabs/dbt:latest
+    build: .
     volumes:
-      - .:/usr/app/dbt/
+      - .:/usr/app/dbt
     environment:
-      - DBT_PROFILES_DIR=/usr/app/dbt
-      - DBT_TARGET=dbttarger
+      DBT_PROFILES_DIR: /usr/app/dbt
+      DBT_TARGET: dev
+    depends_on:
+      - postgres
     command: ["run"]
