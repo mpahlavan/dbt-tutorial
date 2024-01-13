@@ -1,7 +1,5 @@
-WITH CUSTOMERORDERS AS (
-SELECT C.CustomerID
-FROM Customers C
-JOIN Orders O ON C.CustomerID = O.CustomerID
-)
-SELECT * 
-FROM CUSTOMERORDERS
+SELECT
+  co.*,
+  cu.*
+FROM customers cu
+JOIN orders co ON cu.customer_id = co.customer_id
