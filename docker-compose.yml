@@ -2,7 +2,9 @@ version: '3'
 
 services:
   postgres:
+    container_name: postgres
     image: postgres:12.17
+    restart: always
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -16,10 +18,13 @@ services:
       retries: 5
 
   dbt:
-    image: ghcr.io/dbt-labs/dbt-postgres:1.7.2 #dbtlabs/dbt:latest
+    container_name: dbt
+    image: ghcr.io/dbt-labs/dbt-postgres:1.7.2 #dbtlabs/dbt:latest  #dbt-dummy
     build: .
     volumes:
       - .:/usr/app/dbt
+    ports:
+      - "8080:8080"
     environment:
       DBT_PROFILES_DIR: /usr/app/dbt
       DBT_TARGET: dev

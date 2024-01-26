@@ -7,7 +7,7 @@ down:
 	docker-compose down
 
 run-dbt-tbls:
-	docker-compose --project-name dbttest run dbt-1 dbt run-operation create_customers_table create_orders_table
+	docker-compose --project-name dbttest run dbt build
+	
 
-run-dbt-docs:
-	docker-compose --project-name dbttest run dbt-1 dbt docs serve
+

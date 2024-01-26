@@ -8,4 +8,5 @@ dbt-proj:
       pass: postgres
       port: 5432
       dbname: postgres
-      schema: postgres
+      schema: public
+      threads: 1
