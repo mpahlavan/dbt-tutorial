@@ -3,9 +3,10 @@ dbt-proj:
   outputs:
     dev:
       type: postgres
-      host: host.docker.internal
+      host: postgres
       user: postgres
       pass: postgres
       port: 5432
       dbname: postgres
       schema: postgres
+      threads: 4
