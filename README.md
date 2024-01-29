@@ -10,4 +10,4 @@ Try running the following commands:
 
 ### Resources:
 - Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Jaffleshop [https://github.com/dbt-labs/jaffle_shop.git]
+- Learn more about [Jaffle_shop](https://github.com/dbt-labs/jaffle_shop.git)
