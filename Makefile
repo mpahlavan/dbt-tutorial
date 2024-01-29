@@ -1,4 +1,4 @@
-.PHONY: up down run-dbt-docs run-dbt-tbls
+.PHONY: up down run-dbt-docs add-dbt-tbls dbt-compile
 
 up:
 	docker-compose --project-name dbttest up -d 
@@ -6,8 +6,8 @@ up:
 down:
 	docker-compose down
 
-run-dbt-tbls:
+add-dbt-tbls:
 	docker-compose --project-name dbttest run dbt build
 	
-
-
+dbt-compile:
+	docker-compose --project-name dbttest run dbt compile
